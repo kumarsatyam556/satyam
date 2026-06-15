@@ -126,19 +126,8 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
   return (
     <div className="relative w-full h-full">
       {/* Loading Overlay */}
-      {isLoading && (
-        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#020f2f] text-white">
-          <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden mb-4 relative">
-            <div
-              className="absolute left-0 top-0 h-full bg-purple-400 transition-all duration-300 ease-out"
-              style={{ width: `${loadingPercentage}%` }}
-            />
-          </div>
-          <span className="text-sm tracking-widest uppercase font-mono text-purple-300">
-            Preloading Experience {loadingPercentage}%
-          </span>
-        </div>
-      )}
+        {/* Loading overlay removed */}
+        {null}
 
       {/* HTML5 Canvas */}
       <canvas

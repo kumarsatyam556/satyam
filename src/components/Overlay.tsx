@@ -24,35 +24,14 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
 
   return (
-    <div className="absolute inset-0 z-10 pointer-events-none w-full h-full">
-      {/* Scroll indicator */}
-      <motion.div
-        style={{ opacity: indicatorOpacity }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-xs tracking-[0.2em] font-mono"
-      >
-        <span>SCROLL TO EXPLORE</span>
-        <div className="w-[1px] h-10 bg-white/10 relative overflow-hidden">
-          <motion.div
-            animate={{
-              y: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-purple-400"
-          />
-        </div>
-      </motion.div>
-
+    <div className="relative">
       {/* Section 1: Intro (0% scroll) */}
       <motion.div
         style={{ opacity: opacity1, y: y1 }}
         className="sticky top-0 h-screen w-full flex flex-col items-center justify-center text-center px-4"
       >
         <span className="text-purple-400 text-xs md:text-sm tracking-[0.3em] font-mono mb-4 uppercase">
-          Student & Developer // Portfolio 2026
+          Student &amp; Developer // Portfolio 2026
         </span>
         <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-none bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400 max-w-4xl select-none">
           SATYAM.
@@ -71,7 +50,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           01 / PASSION
         </span>
         <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400 select-none">
-          I LOVE WEB & APP <br />
+          I LOVE WEB &amp; APP <br />
           <span className="text-purple-300">DEVELOPMENT.</span>
         </h2>
         <p className="text-neutral-400 text-sm md:text-base max-w-md mt-6 leading-relaxed font-sans">
@@ -88,7 +67,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           02 / SKILLSET
         </span>
         <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-l from-white to-neutral-400 select-none">
-          HTML, PYTHON & <br />
+          HTML, PYTHON &amp; <br />
           <span className="text-purple-300">JAVASCRIPT.</span>
         </h2>
         <p className="text-neutral-400 text-sm md:text-base max-w-md mt-6 leading-relaxed font-sans">

@@ -14,7 +14,17 @@ interface Project {
   link: string;
 }
 
+// Personal profile project
 const PROJECTS_DATA: Project[] = [
+  {
+    id: "00",
+    title: "ABOUT ME",
+    role: "Student Developer",
+    description: "I am Satyam, a class 10 student. I love coding and cyber security.",
+    tags: ["Coding", "Cybersecurity"],
+    year: "2026",
+    link: "#",
+  },
   {
     id: "01",
     title: "NEURAL LABS",
@@ -46,7 +56,7 @@ const PROJECTS_DATA: Project[] = [
     id: "04",
     title: "SYNAPSE AUDIO",
     role: "Solo Developer",
-    description: "Interactive audio visualizer translating micro-tonal sound waves into web-native generative geometric particle grids.",
+    description: "Interactive audio visualizer translating micro‑tonal sound waves into web‑native generative geometric particle grids.",
     tags: ["Web Audio API", "HTML5 Canvas", "Tailwind"],
     year: "2024",
     link: "#",
@@ -54,6 +64,9 @@ const PROJECTS_DATA: Project[] = [
 ];
 
 export default function Projects() {
+  // Show only the first four items (including ABOUT ME)
+  const displayedProjects = PROJECTS_DATA.slice(0, 4);
+
   return (
     <section className="relative w-full py-32 px-6 md:px-24 bg-[#020f2f] z-20 overflow-hidden">
       {/* Background radial glow */}
@@ -64,21 +77,15 @@ export default function Projects() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
           <div>
-            <span className="text-purple-400 text-xs md:text-sm tracking-[0.3em] font-mono mb-4 uppercase block">
-              Selected Work
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400">
-              CASE STUDIES
-            </h2>
+            <span className="text-purple-400 text-xs md:text-sm tracking-[0.3em] font-mono mb-4 uppercase block">Selected Work</span>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400">CASE STUDIES</h2>
           </div>
-          <p className="text-neutral-400 text-sm md:text-base max-w-sm font-sans leading-relaxed">
-            A curated selection of experiments and products built at the threshold of design complexity and technical performance.
-          </p>
+          <p className="text-neutral-400 text-sm md:text-base max-w-sm font-sans leading-relaxed">A curated selection of experiments and products built at the threshold of design complexity and technical performance.</p>
         </div>
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {PROJECTS_DATA.map((project, idx) => (
+          {displayedProjects.map((project, idx) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
@@ -93,41 +100,25 @@ export default function Projects() {
               <div>
                 {/* ID & Year */}
                 <div className="flex items-center justify-between mb-8">
-                  <span className="text-purple-400 font-mono text-sm tracking-widest">
-                    [{project.id}]
-                  </span>
-                  <span className="text-white/40 font-mono text-sm">
-                    {project.year}
-                  </span>
+                  <span className="text-purple-400 font-mono text-sm tracking-widest">[{project.id}]</span>
+                  <span className="text-white/40 font-mono text-sm">{project.year}</span>
                 </div>
 
                 {/* Title & Role */}
-                <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2 group-hover:text-purple-300 transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <span className="text-white/50 text-xs uppercase font-mono tracking-widest block mb-6">
-                  {project.role}
-                </span>
+                <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2 group-hover:text-purple-300 transition-colors duration-300">{project.title}</h3>
+                <span className="text-white/50 text-xs uppercase font-mono tracking-widest block mb-6">{project.role}</span>
 
                 {/* Description */}
-                <p className="text-white/75 text-sm leading-relaxed mb-8 font-sans">
-                  {project.description}
-                </p>
+                <p className="text-white/75 text-sm leading-relaxed mb-8 font-sans">{project.description}</p>
               </div>
 
-              {/* Tags & Link Button */}
+              {/* Tags & Link */}
               <div>
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full text-[10px] tracking-wider font-mono bg-white/5 border border-white/5 text-purple-200"
-                    >
-                      {tag}
-                    </span>
+                    <span key={tag} className="px-3 py-1 rounded-full text-[10px] tracking-wider font-mono bg-white/5 border border-white/5 text-purple-200">{tag}</span>
                   ))}
                 </div>
-
                 <div className="flex items-center gap-2 text-white/40 group-hover:text-white font-mono text-xs tracking-widest uppercase transition-colors duration-300 mt-auto border-t border-white/5 pt-6">
                   <span>View Project</span>
                   <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -139,9 +130,7 @@ export default function Projects() {
 
         {/* Footer info */}
         <div className="mt-24 text-center">
-          <p className="text-neutral-500 text-xs font-mono tracking-[0.2em] uppercase">
-            Designed & Developed by Satyam © 2026
-          </p>
+          <p className="text-neutral-500 text-xs font-mono tracking-[0.2em] uppercase">Designed & Developed by Satyam © 2026</p>
         </div>
       </div>
     </section>
