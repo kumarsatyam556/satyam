@@ -21,7 +21,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
   const y3 = useTransform(scrollYProgress, [0.52, 0.62, 0.75, 0.82], [80, 0, 0, -80]);
 
   // Scroll explorer indicator opacity map
-  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+
 
   return (
     <div className="relative">

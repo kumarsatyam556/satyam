@@ -37,3 +37,5 @@ next-env.d.ts
 
 # local portable Node binary
 /.node
+
+.vercel

@@ -12,7 +12,7 @@ const TOTAL_FRAMES = 35;
 export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
-  const [loadedCount, setLoadedCount] = useState(0);
+
   const [isLoading, setIsLoading] = useState(true);
 
   // Apply smooth spring physics to scroll scrubbing for premium tactile feedback
@@ -31,13 +31,12 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
       const img = new Image();
       const paddedIndex = i.toString().padStart(2, "0");
       img.src = `/sequence/frame_${paddedIndex}_delay-0.066s.png`;
-      img.onload = () => {
-        loaded++;
-        setLoadedCount(loaded);
-        if (loaded === TOTAL_FRAMES) {
-          setIsLoading(false);
-        }
-      };
+    img.onload = () => {
+      loaded++;
+      if (loaded === TOTAL_FRAMES) {
+        setIsLoading(false);
+      }
+    };
       imagesArray.push(img);
     }
     imagesRef.current = imagesArray;
@@ -121,13 +120,19 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
     return () => unsubscribe();
   }, [isLoading, smoothProgress]);
 
-  const loadingPercentage = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+
 
   return (
     <div className="relative w-full h-full">
       {/* Loading Overlay */}
-        {/* Loading overlay removed */}
-        {null}
+      {isLoading && (
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-black bg-opacity-70 text-white text-center p-8">
+          <div className="spinner mb-4"></div>
+          <h1 className="text-4xl font-bold mb-2">Satyam</h1>
+          <p className="text-xl mb-1">Class 10 Student</p>
+          <p className="text-lg">I love coding &amp; cyber security</p>
+        </div>
+      )}
 
       {/* HTML5 Canvas */}
       <canvas
